@@ -1,0 +1,75 @@
+name: workflow
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # time
+  workflow_dispatch:       # hand
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  update-activity:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Pulse via API
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // opana
+            await new Promise(r => setTimeout(r, Math.floor(Math.random() * 49) * 60 * 1000));
+
+            const filePath = ".github/JG832J1784GJ";   // path
+            const commitPrefixes = ["fix", "update", "refactor", "add", "remove", "improve", "optimize", "feature", "bug", "docs", "test", "style", "merge", "cleanup", "adjust", "rename", "enhance", "replace", "format", "config", "release", "hotfix", "patch", "review", "sync", "rollback", "revert", "tweak", "implement", "validate", "check", "load", "save", "export", "import", "upgrade", "downgrade", "convert", "render", "parse", "compress", "encrypt", "decrypt", "log", "trace", "monitor", "analyze", "schedule", "retry", "notify"];
+            const branch = "main";
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            async function getCurrentFile() {
+              try {
+                const { data } = await github.rest.repos.getContent({
+                  owner, repo, path: filePath, ref: branch,
+                });
+                if (Array.isArray(data)) throw new Error('stamp path is a directory');
+                const content = Buffer.from(data.content, 'base64').toString('utf8');
+                return { content, sha: data.sha };
+              } catch (e) {
+                if (e.status === 404) return { content: '', sha: undefined };
+                throw e;
+              }
+            }
+
+            function randomCommitMessage() {
+              return `${commitPrefixes[Math.floor(Math.random() * commitPrefixes.length)]} ${commitPrefixes[Math.floor(Math.random() * commitPrefixes.length)]}`;
+            }
+
+            let lastError;
+            for (let attempt = 1; attempt <= 5; attempt++) {
+              try {
+                const { content, sha } = await getCurrentFile();
+                const newLine = [new Date().toISOString(), `run=${context.runId}`, `n=${Math.floor(Math.random() * 1e6)}`].join("  ") + "\n";
+                const updatedContent = content + newLine;
+                const commitMessage = randomCommitMessage();
+                const { data: commitData } = await github.rest.repos.createOrUpdateFileContents({
+                  owner,
+                  repo,
+                  path: filePath,
+                  message: commitMessage,
+                  content: Buffer.from(updatedContent, 'utf8').toString('base64'),
+                  branch,
+                  sha,
+                });
+                core.info(`COMMIT_OK attempt=${attempt} sha=${commitData.commit.sha} msg=${commitMessage}`);
+                return;
+              } catch (err) {
+                lastError = err;
+                if (err.status === 409 && attempt < 5) {
+                  core.warning(`Conflict on attempt ${attempt}, retrying...`);
+                  await new Promise(r => setTimeout(r, 1200 * attempt));
+                  continue;
+                }
+                throw err;
+              }
+            }
+            throw lastError;
